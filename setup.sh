@@ -4,6 +4,8 @@
 set -x # echo command
 set -e # exit on first error
 
+# installing jinja template package
+pip install -r  ./tools_requirements.txt
 
 ## run unit-tests
 python tests/test_generate_deployment_files.py
@@ -18,8 +20,6 @@ git clone https://github.com/RetailMeNotSandbox/dart.git
 python generate_deployment_files.py
 
 # We build a VM (Using vagrant => vagrant up) that will have docker tools installed and other useful pre-reqs.
-vagrant plugin install vagrant-triggers
-vagrant plugin install vagrant-vbguest
 vagrant up
 
 ## Launche docker-compose that launches dart-web, dart-postgresql and dart-elastic (elasticmq) as well as the trigger/subscription and engine workers.
